@@ -1,0 +1,16 @@
+services:
+  tack:
+    build: .
+    image: tack:latest
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      # Set this to the URL people use, so invite links and secure cookies are right.
+      TACK_PUBLIC_URL: "http://localhost:3000"
+      TACK_MAX_UPLOAD_MB: "25"
+    volumes:
+      - tack-data:/data
+
+volumes:
+  tack-data:
